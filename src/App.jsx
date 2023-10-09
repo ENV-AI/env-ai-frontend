@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <p>ENV AI Project Frontend</p>
+      <p className="text-3xl font-bold underline">ENV AI Project Frontend</p>
     </>
   );
 }
