@@ -5,6 +5,7 @@ import Prediction from "../components/Prediction";
 import Highlights from "../components/Highlights";
 import HourlyTemperature from "../components/HourlyTemperature";
 
+
 const Homepage = () => {
   return (
     <div className="container">
@@ -15,6 +16,7 @@ const Homepage = () => {
           <Summary />
           <Forecast />
           <Prediction />
+      
         </div>
         {/* Right Section */}
         <div className="right-section w-3/4">
