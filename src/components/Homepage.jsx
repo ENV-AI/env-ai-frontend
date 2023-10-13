@@ -20,8 +20,7 @@ const Homepage = () => {
         </div>
         {/* Right Section */}
         <div className="right-section w-3/4">
-          <Highlights />
-          <HourlyTemperature />
+     
         </div>
       </div>
     </div>
