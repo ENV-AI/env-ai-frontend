@@ -1,11 +1,13 @@
 import "./App.css";
 
-import Homepage from "./components/Homepage";
+// import Homepage from "./components/Homepage";
+import PredictionDetails from "./components/PredictionDetails";
 
 function App() {
   return (
     <div className="min-h-screen bg-slate-950">
-      <Homepage />
+      {/* <Homepage /> */}
+    <PredictionDetails/>
     </div>
   );
 }
