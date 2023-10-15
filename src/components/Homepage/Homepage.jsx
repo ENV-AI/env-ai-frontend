@@ -1,10 +1,9 @@
-
-import Header from "../components/Header";
-import Summary from "../components/Summary";
-import Forecast from "../components/Forecast";
-import Prediction from "../components/Prediction";
-import Highlights from "../components/Highlights";
-import HourlyTemperature from "../components/HourlyTemperature";
+import Header from "./Header";
+import Summary from "./Summary";
+import Forecast from "./Forecast";
+import Prediction from "./Prediction";
+import Highlights from "./Highlights";
+import HourlyTemperature from "./HourlyTemperature";
 
 const Homepage = () => {
   return (
