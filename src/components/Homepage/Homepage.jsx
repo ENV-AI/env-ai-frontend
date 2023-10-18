@@ -11,13 +11,13 @@ const Homepage = () => {
       <Header />
       <div className="flex justify-between items-start">
         {/* Left Section */}
-        <div className="mr-4 w-1/4">
+        <div className="mr-4 w-2/6">
           <Summary />
           <Forecast />
           <Prediction />
         </div>
         {/* Right Section */}
-        <div className="right-section w-3/4">
+        <div className="right-section w-4/6">
           <Highlights />
           <HourlyTemperature />
         </div>
