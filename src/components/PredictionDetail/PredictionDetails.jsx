@@ -236,7 +236,7 @@ const PredictionDetails = () => {
      
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-[66px]">
         <DataTable className="text-white"
         columns={columns}
         data={data}
