@@ -18,7 +18,7 @@ const Homepage = () => {
           <Prediction />
         </div>
         {/* Right Section */}
-        <div className="right-section w-4/6">
+        <div className="w-4/6">
           <Highlights />
           <HourlyPredictions />
         </div>
