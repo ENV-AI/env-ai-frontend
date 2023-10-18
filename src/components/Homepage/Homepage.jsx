@@ -7,17 +7,18 @@ import HourlyTemperature from "./HourlyTemperature";
 
 const Homepage = () => {
   return (
-    <div className="container">
+    <div>
       <Header />
-      <div className="flex justify-between items-start">
+      <hr className="border-gray-600" />
+      <div className="container flex justify-between items-start py-5">
         {/* Left Section */}
-        <div className="mr-4 w-1/4">
+        <div className="mr-4 w-96">
           <Summary />
           <Forecast />
           <Prediction />
         </div>
         {/* Right Section */}
-        <div className="right-section w-3/4">
+        <div className="right-section w-4/6">
           <Highlights />
           <HourlyTemperature />
         </div>
