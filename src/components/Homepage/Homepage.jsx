@@ -3,7 +3,7 @@ import Summary from "./Summary";
 import Forecast from "./Forecast";
 import Prediction from "./Prediction";
 import Highlights from "./Highlights";
-import HourlyTemperature from "./HourlyTemperature";
+import HourlyPredictions from "./HourlyPredictions";
 
 const Homepage = () => {
   return (
@@ -20,7 +20,7 @@ const Homepage = () => {
         {/* Right Section */}
         <div className="right-section w-4/6">
           <Highlights />
-          <HourlyTemperature />
+          <HourlyPredictions />
         </div>
       </div>
     </div>

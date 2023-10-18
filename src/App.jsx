@@ -13,8 +13,6 @@ function App() {
           element={<PredictionDetails />}
         ></Route>
       </Routes>
-      {/* <Homepage /> */}
-      {/* <PredictionDetails /> */}
     </div>
   );
 }
