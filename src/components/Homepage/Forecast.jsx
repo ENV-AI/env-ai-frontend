@@ -2,7 +2,7 @@ import ForecastDaily from "./ForecastDaily";
 
 const Forecast = () => {
   return (
-    <div className="my-2 text-white">
+    <div className="my-5 text-white">
       <h1 className="mb-1">5 Days Forecast</h1>
       <div className="text-white p-3 bg-slate-900 rounded-lg">
         <ForecastDaily

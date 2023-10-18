@@ -3,7 +3,7 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const Summary = () => {
   return (
-    <div className="my-2 text-white p-3 bg-slate-900 rounded-lg">
+    <div className="my-5 text-white p-3 bg-slate-900 rounded-lg">
       <div>
         Now
         <br />

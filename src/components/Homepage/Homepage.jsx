@@ -9,9 +9,9 @@ const Homepage = () => {
   return (
     <div className="container">
       <Header />
-      <div className="flex justify-between items-start">
+      <div className="flex justify-between items-start py-5">
         {/* Left Section */}
-        <div className="mr-4 w-2/6">
+        <div className="mr-4 w-96">
           <Summary />
           <Forecast />
           <Prediction />
