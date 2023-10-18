@@ -2,7 +2,7 @@ import { BiSearch, BiCurrentLocation } from "react-icons/bi";
 
 const Header = () => {
   return (
-    <div className="h-16 flex justify-between items-center">
+    <div className="container py-5 flex justify-between items-center">
       {/* Logo */}
       <div className="font-bold text-xl text-white hover-pointer">Env AI</div>
       {/* Search */}
