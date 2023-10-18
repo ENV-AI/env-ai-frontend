@@ -6,9 +6,7 @@ const Header = () => {
     <div className="container py-5 flex justify-between items-center">
       {/* Logo */}
       <div className="font-bold text-xl text-white hover-pointer">
-        <Link className="text-gray-400" to="/">
-          Env AI
-        </Link>
+        <Link to="/">Env AI</Link>
       </div>
       {/* Search */}
       <div className="h-[40px] w-[30%] px-3 flex justify-start items-center bg-slate-800 border border-slate-400 rounded-full text-white text-sm">
