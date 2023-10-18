@@ -188,6 +188,7 @@ const PredictionDetails = () => {
   return (
     <div className="container">
       <Header />
+  
       <div className="flex justify-between items-start">
         {/* Left Section */}
         <div className="mr-4 w-1/4">
@@ -206,19 +207,19 @@ const PredictionDetails = () => {
 
 </select>
 </div>
-<div className="flex mr-3 mt-3">
+<div className="flex mr-3 mt-4">
   <p className="text-white">Select Time Extent:</p>
 <div className="flex ml-2">
 <p className="text-white mr-2">From:</p>
-<DatePicker className="w-24 pl-1" selected={startDate} onChange={(date) => setStartDate(date)} />
+<DatePicker className="w-24  pl-1"  popperPlacement="left"   selected={startDate} onChange={(date) => setStartDate(date)} />
 <p className="text-white mr-2 ml-3">To:</p>
-<DatePicker className="w-24 pl-1" selected={finishDate} onChange={(date) => setFinishDate(date)} />
+<DatePicker className="w-24 pl-1" popperPlacement="left" selected={finishDate} onChange={(date) => setFinishDate(date)} />
 </div>
 
 
 
 </div>
-<div className="mr-20 flex mt-2">
+<div className="mr-20 flex mt-4">
       <p className="text-white mr-3">Show Weather Based On Parameter:</p>
       <select data-te-select-init>
   <option value="1">Temperature</option>
@@ -235,8 +236,8 @@ const PredictionDetails = () => {
      
         </div>
       </div>
-      <div>
-        <DataTable className="text-white mt-5"
+      <div className="mt-[67px]">
+        <DataTable className="text-white"
         columns={columns}
         data={data}
         fixedHeader
