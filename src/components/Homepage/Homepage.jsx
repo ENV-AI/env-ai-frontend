@@ -9,7 +9,6 @@ const Homepage = () => {
   return (
     <div>
       <Header />
-      <hr className="border-gray-600" />
       <div className="container flex justify-between items-start py-5">
         {/* Left Section */}
         <div className="mr-4 w-96">

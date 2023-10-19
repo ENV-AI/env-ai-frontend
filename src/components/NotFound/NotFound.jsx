@@ -6,7 +6,6 @@ const NotFound = () => {
   return (
     <div>
       <Header />
-      <hr className="border-gray-600" />
       <div className="m-12 text-white text-center">
         <p className="mb-1 text-xl">Page Not Found</p>
         <Link
