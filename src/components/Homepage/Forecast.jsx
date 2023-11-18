@@ -28,6 +28,8 @@ const days = [
 
 const Forecast = () => {
   const { highlightedData } = useContext(GContext);
+
+const Forecast = () => {
   return (
     <div className="my-5 text-white">
       <h1 className="mb-1">5 Days Forecast</h1>

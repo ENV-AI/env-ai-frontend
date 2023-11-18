@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FaCalendar } from "react-icons/fa";
+import { FaCalendar, FaCloud } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import GContext from "../Contexts/GContext";
 

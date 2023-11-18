@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import DataTable from "react-data-table-component";
 import GContext from "../Contexts/GContext";
 const domain = "http://182.163.112.207:8052";
+import "react-datepicker/dist/react-datepicker.css";
 
 const PredictionDetails = () => {
   const [data, setData] = useState([]);

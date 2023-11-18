@@ -3,6 +3,7 @@ import Homepage from "./components/Homepage/Homepage";
 import PredictionDetails from "./components/PredictionDetail/PredictionDetails";
 import "./App.css";
 import { GProvider } from "./components/Contexts/GContext";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             path="/prediction-details"
             element={<PredictionDetails />}
           ></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </GProvider>
     </div>

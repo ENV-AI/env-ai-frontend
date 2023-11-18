@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import GContext from "../Contexts/GContext";
 const APIKEY = "e125d116dfcc4d74a1506c3e90c01191";
-import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const { setCountry, setLocation, setLongitude, setLatitude } =
