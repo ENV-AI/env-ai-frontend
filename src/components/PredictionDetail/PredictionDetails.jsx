@@ -1,248 +1,153 @@
 import Header from "../Homepage/Header";
-import  { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DataTable from "react-data-table-component";
-
-
+import GContext from "../Contexts/GContext";
+const domain = "http://182.163.112.207:8052";
+import "react-datepicker/dist/react-datepicker.css";
 
 const PredictionDetails = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [finishDate, setFinishDate] = useState(new Date());
+  const [data, setData] = useState([]);
+  const [forecastType, setForecastType] = useState("1");
+  const [daysCount, setDaysCounts] = useState("1");
+  const [loading, setLoading] = useState(false);
+  const { startDate } = useContext(GContext);
+
   const columns = [
     {
-      name : "Day",
-      selector: row => row.day,
-      sortable:true
+      name: "Day",
+      selector: (row) => new Date(row.date).toLocaleString(),
+      sortable: true,
     },
-      {
-      name : "Temperature",
-       selector: row => row.temp,
-          sortable:true
-    
-    },
-      {
-      name : "Weather",
-         selector: row => row.weather,
-            sortable:true
-    },
-      {
-      name : "Feels Like",
-         selector: row => row.feels,
-            sortable:true
-    },
-      {
-      name : "Wind",
-         selector: row => row.wind,
-            sortable:true
-    },
-      {
-      name : "Humidity",
-         selector: row => row.humidity,
-            sortable:true
-    },
-      {
-      name : "Chance",
-         selector: row => row.chance,
-          sortable:true
-    },
-
-  ];
-  const data = [
     {
-      id:1,
-      day:"Fri \n 13 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"32°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"11%"
-
+      name: "Temperature (°C)",
+      selector: (row) => row.future_predictions_T2M.toFixed(2),
+      sortable: true,
     },
-      {
-      id:2,
-      day:"Sat \n 14 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"34°C",
-      wind:"10km/h",
-      humidity:"23%",
-      chance:"21%"
-
+    {
+      name: "Humidity (%)",
+      selector: (row) => row.future_predictions_RH2M.toFixed(2),
+      sortable: true,
     },
-      {
-      id:3,
-      day:"Sun \n 15 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"36°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"21%"
-
+    {
+      name: "Pressure (KPa)",
+      selector: (row) => row.future_predictions_PS.toFixed(2),
+      sortable: true,
     },
-      {
-      id:4,
-      day:"Mon \n 16 Oct",
-      temp:"32/25°C",
-      weather:"Sunny",
-      feels:"32°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"21%"
-
+    {
+      name: "Wind (m/s)",
+      selector: (row) => row.future_predictions_WS10M.toFixed(2),
+      sortable: true,
     },
-        {
-      id:1,
-      day:"Fri \n 13 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"32°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"21%"
-
+    {
+      name: "Precipitation (mm/hr)",
+      selector: (row) => row.future_predictions_PRECTOTCORR.toFixed(2),
+      sortable: true,
     },
-      {
-      id:2,
-      day:"Sat \n 14 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"34°C",
-      wind:"10km/h",
-      humidity:"29%",
-      chance:"12%"
+  ];
 
-    },
-      {
-      id:3,
-      day:"Sun \n 15 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"36°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"19%"
+  useEffect(() => {
+    fetchWeatherData("initial", forecastType, daysCount); // Fetch initial data
+  }, []);
 
-    },
-      {
-      id:4,
-      day:"Mon \n 16 Oct",
-      temp:"32/25°C",
-      weather:"Sunny",
-      feels:"32°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"22%"
-
-    },
-        {
-      id:1,
-      day:"Fri \n 13 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"32°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"21%"
-
-    },
-      {
-      id:2,
-      day:"Sat \n 14 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"34°C",
-      wind:"10km/h",
-      humidity:"29%",
-      chance:"21%"
-
-    },
-      {
-      id:3,
-      day:"Sun \n 15 Oct",
-      temp:"32/25°C",
-      weather:"Mostly Sunny",
-      feels:"36°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"21%"
-
-    },
-      {
-      id:4,
-      day:"Mon \n 16 Oct",
-      temp:"32/25°C",
-      weather:"Hot",
-      feels:"32°C",
-      wind:"10km/h",
-      humidity:"39%",
-      chance:"21%"
-
+  const fetchWeatherData = (type, forecastType, daysCount) => {
+    let url;
+    if (type === "initial") {
+      setLoading(true);
+      url = `${domain}/predictions`;
     }
-  
-  
-  ]
+    if (type === "update") {
+      setLoading(true);
+      url = `${domain}/predictions?counts=${daysCount}&forecastType=${forecastType}`;
+    }
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          setData(data.pred_temp);
+        } else {
+          alert("Geolocation request failed.");
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error("Error:", error);
+      });
+  };
+
+  const handleForecastTypeChange = (e) => {
+    setForecastType(e.target.value);
+    fetchWeatherData("update", e.target.value, daysCount);
+  };
+
+  const handleDayscounts = (e) => {
+    setDaysCounts(e.target.value);
+    fetchWeatherData("update", forecastType, e.target.value);
+  };
 
   return (
     <div className="container">
       <Header />
-  
+
       <div className="flex justify-between items-start">
         {/* Left Section */}
-        <div className="mr-4 w-1/4">
-       
-      
-        </div>
+        <div className="mr-4 w-1/4"></div>
         {/* Right Section */}
         <div className="right-section">
-      <div className="mr-20 flex">
-      <p className="text-white mr-3">Show Weather On:</p>
-      <select data-te-select-init>
-  <option value="1">Monthly Forecast</option>
-  <option value="2">Bi-Weekly Forecast</option>
-  <option value="3">Weekly Forecast</option>
-  <option value="4">Hourly Forecast</option>
-
-</select>
-</div>
-<div className="flex mr-3 mt-4">
-  <p className="text-white">Select Time Extent:</p>
-<div className="flex ml-2">
-<p className="text-white mr-2">From:</p>
-<DatePicker className="w-24  pl-1"  popperPlacement="left"   selected={startDate} onChange={(date) => setStartDate(date)} />
-<p className="text-white mr-2 ml-3">To:</p>
-<DatePicker className="w-24 pl-1" popperPlacement="left" selected={finishDate} onChange={(date) => setFinishDate(date)} />
-</div>
-
-
-
-</div>
-<div className="mr-20 flex mt-4">
-      <p className="text-white mr-3">Show Weather Based On Parameter:</p>
-      <select data-te-select-init>
-  <option value="1">Temperature</option>
-  <option value="2">Humidity</option>
-  <option value="3">Wind</option>
-  <option value="4">Precipitation</option>
-
-</select>
-</div>
-
-       
-    
-
-     
+          <div className="mr-20 flex">
+            <p className="text-white mr-3">Show Weather On:</p>
+            <select value={forecastType} onChange={handleForecastTypeChange}>
+              <option value="1">Hourly Forecast</option>
+              <option value="2">3-Hourly Forecast</option>
+              <option value="3">Daily Forecast</option>
+            </select>
+          </div>
+          <div className="flex mr-3 mt-4">
+            <p className="text-white">Select Time Extent:</p>
+            <div className="flex ml-2">
+              <p className="text-white mr-2">From:</p>
+              <DatePicker
+                className="w-24 pl-1"
+                popperPlacement="left"
+                selected={startDate}
+                readOnly={true}
+              />
+              <p className="text-white mr-2 ml-3">
+                to next{" "}
+                <select
+                  className="text-black"
+                  value={daysCount}
+                  onChange={handleDayscounts}
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>{" "}
+                days
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="mt-[67px]">
-        <DataTable className="text-white"
-        columns={columns}
-        data={data}
-        fixedHeader
-        pagination
-        ></DataTable>
+        {loading ? (
+          <div className="w-full flex justify-center align-middle">
+            <img src="./loader.gif" />
+          </div>
+        ) : (
+          <DataTable
+            className="text-white"
+            columns={columns}
+            data={data}
+            fixedHeader
+            pagination
+          ></DataTable>
+        )}
       </div>
     </div>
   );
