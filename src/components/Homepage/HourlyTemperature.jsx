@@ -1,5 +1,5 @@
-import { FaCloud, FaMoon } from "react-icons/fa";
-import { MdSunny } from "react-icons/md";
+// import { FaCloud, FaMoon } from "react-icons/fa";
+// import { MdSunny } from "react-icons/md";
 
 const HourlyTemperature = ({ time, weather, temperature }) => {
   return (
@@ -12,7 +12,7 @@ const HourlyTemperature = ({ time, weather, temperature }) => {
         <span className="text-sm -mt-1">o</span>
         <span className="text-lg"> C</span>
 
-        <div className="w-24 flex flex-col justify-center items-center gap-3 text-gray-400 p-3 bg-slate-900 rounded-lg">
+        {/* <div className="w-24 flex flex-col justify-center items-center gap-3 text-gray-400 p-3 bg-slate-900 rounded-lg">
           <text>{time}</text>
           {weather === "cloudy" ? (
             <FaCloud className="h-10 text-3xl text-white" />
@@ -25,7 +25,7 @@ const HourlyTemperature = ({ time, weather, temperature }) => {
             <span>{temperature}</span>
             <span className="text-sm -mt-1">o</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
